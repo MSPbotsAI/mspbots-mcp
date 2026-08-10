@@ -1,9 +1,9 @@
 {
-  "name": "mspbots-mcp",
+  "name": "mspbots",
   "owner": { "name": "MSPbots", "url": "https://mspbots.ai" },
   "plugins": [
     {
-      "name": "mspbots-mcp",
+      "name": "mspbots",
       "source": "./",
       "description": "MSPbots MCP data-access skill: connect the MSPbots DataCLI MCP and query platform data.",
       "version": "0.1.0"

@@ -1,0 +1,6 @@
+{
+  "name": "mspbots-mcp",
+  "description": "Access MSPbots platform data through the MSPbots MCP server.",
+  "version": "0.1.0",
+  "author": { "name": "MSPbots" }
+}

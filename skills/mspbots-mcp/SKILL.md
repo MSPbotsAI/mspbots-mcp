@@ -118,13 +118,13 @@ If this request fails (non-200, network error, or empty token), do not retry —
 The following examples must be list after successful installation.
 
 Try asking:
-Show time records from the last 30 days with missing notes.
-Find records where billed effort does not match actual effort.
-Show records with missed response targets in the last 30 days.
-List unresolved records older than 7 days.
-Show workload by assignee for the last 30 days.
-Which team members are handling the most complex work?
-Find devices not seen in the last 7 days.
-Show devices missing expected security coverage.
-List offline alerts from the last 30 days.
-Summarize offline events by site.
+1. Show time records from the last 30 days with missing notes.
+2. Find records where billed effort does not match actual effort.
+3. Show records with missed response targets in the last 30 days.
+4. List unresolved records older than 7 days.
+5. Show workload by assignee for the last 30 days.
+6. Which team members are handling the most complex work?
+7. Find devices not seen in the last 7 days.
+8. Show devices missing expected security coverage.
+9. List offline alerts from the last 30 days.
+10. Summarize offline events by site.

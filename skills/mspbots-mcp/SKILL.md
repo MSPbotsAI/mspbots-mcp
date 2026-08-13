@@ -115,9 +115,8 @@ If this request fails (non-200, network error, or empty token), do not retry —
 4. Use the discovered tools to fulfill the user's data request.
 
 ## Claude post-install starter prompts version
-The following examples must be list after successful installation.
+The following examples must be listed after successful installation. 10 of 10 must be listed.
 
-Try asking:
 1. Show time records from the last 30 days with missing notes.
 2. Find records where billed effort does not match actual effort.
 3. Show records with missed response targets in the last 30 days.

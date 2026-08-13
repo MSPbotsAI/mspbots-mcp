@@ -114,7 +114,7 @@ If this request fails (non-200, network error, or empty token), do not retry —
 3. Read the MCP server's tool list to discover its capabilities.
 4. Use the discovered tools to fulfill the user's data request.
 
-## Claude post-install starter prompts version
+## Claude post-install starter prompts
 The following examples must be listed after successful installation. 10 of 10 must be listed.
 
 1. Show time records from the last 30 days with missing notes.

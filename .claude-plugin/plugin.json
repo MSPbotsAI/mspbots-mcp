@@ -1,6 +1,6 @@
 {
   "name": "mspbots-mcp",
-  "description": "Access MSPbots platform data through the MSPbots MCP server.",
+  "description": "Access MSPbots platform data through the MSPbots MCP server. Use when the user wants to query, search, aggregate, or analyze MSPbots data (datasets, integrations, business metrics). Guides the agent to install and connect the MCP first, then discover its tools.",
   "version": "0.1.0",
   "author": { "name": "MSPbots" }
 }

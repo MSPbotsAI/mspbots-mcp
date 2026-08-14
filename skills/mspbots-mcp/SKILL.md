@@ -12,6 +12,8 @@ MSPbots MCP is the data gateway to the MSPbots platform. Through it you can:
 - Discover and search the user's datasets
 - Query dataset data and run aggregations
 - Explore the integrations installed in the user's MSPbots environment
+- Find saved widgets (gadgets) and fetch their render-ready data
+- Create new datasets from a SQL template
 - Work with MSPbots business data on the user's behalf
 
 **Important:** Do NOT assume specific tool names or parameters. After connecting to the MCP server, read its tool list and tool descriptions to learn what is available and how to call it.
@@ -20,11 +22,17 @@ MSPbots MCP is the data gateway to the MSPbots platform. Through it you can:
 
 ## Token config file
 
-The token is persisted in the skill directory at:
+The token is persisted in a stable per-user location outside the skill directory:
 
 ```
-<skill-dir>/config/token.json
+~/.mspbots-mcp/token.json
 ```
+
+Resolve `~` to the user's home directory (`os.path.expanduser`, `$HOME`, or
+`%USERPROFILE%`), and create the `~/.mspbots-mcp/` directory if it does not exist.
+Do NOT store the token inside the skill/plugin directory — that directory is a
+managed plugin cache and may be overwritten when the plugin is updated or
+reinstalled, silently losing the saved token.
 
 Format:
 
@@ -40,7 +48,8 @@ Rules:
 - Before acquiring a token, first check this file. If it exists and the token still works (the MCP server accepts it), reuse it and skip acquisition.
 - After acquiring a new token (either option), write/overwrite this file immediately.
 - If the MCP server rejects the stored token (401/unauthorized), delete or overwrite the file and re-run token acquisition.
-- This file contains a secret: never commit it to git (ensure `config/token.json` under the skill directory is gitignored) and never print the token in output.
+- `saved_at` is recorded for future use (proactive refresh once a token TTL is known); today the only trigger for re-acquisition is a 401/unauthorized from the MCP server.
+- This file contains a secret: never print the token in output, and never write it into any git-tracked location (`~/.mspbots-mcp/` is outside the repo, so it will not be committed).
 
 ## Prerequisite: install the MSPbots MCP server
 
@@ -107,15 +116,22 @@ def fetch_auth_token(code: str) -> str:
 
 If this request fails (non-200, network error, or empty token), do not retry — fall back to Option 1.
 
+> **Maintainer note:** the token-fetch host (`owlstg.mspbots.ai`) is intentionally
+> different from the MCP server host (`owl.mspbots.ai`). This is by design — do NOT
+> "fix" it to the prod `owl` host.
+
 ## Workflow
 
-1. **(Main agent only)** Ensure a valid token is available: read `<skill-dir>/config/token.json`; if missing or invalid, acquire a token via Option 1 or Option 2 and save it to that file. Do not proceed until this step succeeds.
+1. **(Main agent only)** Ensure a valid token is available: read `~/.mspbots-mcp/token.json`; if missing or invalid, acquire a token via Option 1 or Option 2 and save it to that file. Do not proceed until this step succeeds.
 2. Check that the MSPbots MCP server is connected; if not, install it as above using the token from the config file.
 3. Read the MCP server's tool list to discover its capabilities.
 4. Use the discovered tools to fulfill the user's data request.
 
 ## Claude post-install starter prompts
 The following examples must be listed after successful installation. 10 of 10 must be listed.
+
+These are illustrative examples; whether any given one returns data depends on the
+integrations installed and the datasets available in the user's tenant.
 
 1. Show time records from the last 30 days with missing notes.
 2. Find records where billed effort does not match actual effort.

@@ -1,2 +1,4 @@
-# Never commit acquired MSPbots tokens
+# Kept from the pre-OAuth flow: the skill used to persist an acquired MSPbots token
+# here. It no longer writes this file (the client holds the OAuth token), but anyone
+# who ran an earlier version still has one on disk, so the guard stays.
 **/config/token.json

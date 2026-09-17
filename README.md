@@ -17,7 +17,12 @@ That's it — the `mspbots-mcp` skill is now available. The next time you ask th
 
 ## Requirements
 
-- A valid MSPbots access token. You don't need to fetch it manually — the skill acquires it interactively (either by asking you for it, or via the MSPbots browser authorization flow) and reuses it on later runs.
+- An MSPbots account. Nothing to configure — the MCP server speaks standard MCP
+  authorization (OAuth 2.1 + PKCE + dynamic client registration), so your client
+  registers itself and opens a browser for you to approve once. No token to fetch,
+  paste, or store.
+
+  In Claude Code, run `/mcp` if you need to trigger or re-run that approval.
 
 ## What's in here
 

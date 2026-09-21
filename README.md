@@ -10,7 +10,7 @@ In Claude Code, run:
 
 ```
 /plugin marketplace add MSPbotsAI/mspbots-mcp
-/plugin install mspbots-mcp@mspbotsai
+/plugin install mspbots-mcp@mspbots
 ```
 
 That's it — the `mspbots-mcp` skill is now available. The next time you ask the agent to work with MSPbots data, it will follow the skill to install/connect the MCP server and use its tools.

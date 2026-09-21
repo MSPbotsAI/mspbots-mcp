@@ -12,6 +12,7 @@ MSPbots MCP is the data gateway to the MSPbots platform. Through it you can:
 - Discover and search the user's datasets
 - Query dataset data and run aggregations
 - Explore the integrations installed in the user's MSPbots environment
+- Find saved widgets (gadgets) and fetch their render-ready data
 - Work with MSPbots business data on the user's behalf
 
 **Important:** Do NOT assume specific tool names or parameters. After connecting to the MCP server, read its tool list and tool descriptions to learn what is available and how to call it.
@@ -89,6 +90,9 @@ fallback and not the default. Never print the token in output.
 
 ## Claude post-install starter prompts
 The following examples must be listed after successful installation. 10 of 10 must be listed.
+
+These are illustrative examples; whether any given one returns data depends on the
+integrations installed and the datasets available in the user's tenant.
 
 1. Show time records from the last 30 days with missing notes.
 2. Find records where billed effort does not match actual effort.
